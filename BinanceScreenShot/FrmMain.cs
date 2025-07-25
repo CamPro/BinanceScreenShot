@@ -156,7 +156,7 @@ namespace BinanceScreenShot
             Cursor.Position = new Point(0, 0);
 
             // screen shot
-            string textInfo = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim();
+            string textInfo = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
             string imgFileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{textInfo} {DateTime.Now.ToString("yyyy-MM-dd")}.png");
             
             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
