@@ -45,6 +45,7 @@
             this.radioChart3Month = new System.Windows.Forms.RadioButton();
             this.radioChart1Year = new System.Windows.Forms.RadioButton();
             this.dateTimeClock = new System.Windows.Forms.DateTimePicker();
+            this.labelMsg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -64,7 +65,7 @@
             this.label1.Location = new System.Drawing.Point(10, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 17);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Telegram group";
             // 
             // textTelegramLink
@@ -72,7 +73,7 @@
             this.textTelegramLink.Location = new System.Drawing.Point(162, 80);
             this.textTelegramLink.Name = "textTelegramLink";
             this.textTelegramLink.Size = new System.Drawing.Size(310, 23);
-            this.textTelegramLink.TabIndex = 2;
+            this.textTelegramLink.TabIndex = 5;
             this.textTelegramLink.TextChanged += new System.EventHandler(this.textTelegramLink_TextChanged);
             // 
             // buttonOpenProfile
@@ -92,7 +93,7 @@
             this.checkShutdownAfterFinish.Location = new System.Drawing.Point(13, 232);
             this.checkShutdownAfterFinish.Name = "checkShutdownAfterFinish";
             this.checkShutdownAfterFinish.Size = new System.Drawing.Size(159, 21);
-            this.checkShutdownAfterFinish.TabIndex = 4;
+            this.checkShutdownAfterFinish.TabIndex = 13;
             this.checkShutdownAfterFinish.Text = "Shutdown after finish";
             this.checkShutdownAfterFinish.UseVisualStyleBackColor = true;
             // 
@@ -109,7 +110,7 @@
             this.checkExitApp.Location = new System.Drawing.Point(325, 232);
             this.checkExitApp.Name = "checkExitApp";
             this.checkExitApp.Size = new System.Drawing.Size(147, 21);
-            this.checkExitApp.TabIndex = 5;
+            this.checkExitApp.TabIndex = 14;
             this.checkExitApp.Text = "Exit app after finish";
             this.checkExitApp.UseVisualStyleBackColor = true;
             // 
@@ -184,17 +185,29 @@
             // 
             // dateTimeClock
             // 
+            this.dateTimeClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimeClock.Location = new System.Drawing.Point(170, 13);
             this.dateTimeClock.Name = "dateTimeClock";
             this.dateTimeClock.Size = new System.Drawing.Size(145, 23);
-            this.dateTimeClock.TabIndex = 13;
+            this.dateTimeClock.TabIndex = 1;
             this.dateTimeClock.ValueChanged += new System.EventHandler(this.dateTimeClock_ValueChanged);
+            // 
+            // labelMsg
+            // 
+            this.labelMsg.AutoSize = true;
+            this.labelMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMsg.Location = new System.Drawing.Point(169, 42);
+            this.labelMsg.Name = "labelMsg";
+            this.labelMsg.Size = new System.Drawing.Size(12, 17);
+            this.labelMsg.TabIndex = 2;
+            this.labelMsg.Text = ".";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 261);
+            this.Controls.Add(this.labelMsg);
             this.Controls.Add(this.dateTimeClock);
             this.Controls.Add(this.radioChart1Year);
             this.Controls.Add(this.radioChart3Month);
@@ -239,6 +252,7 @@
         private System.Windows.Forms.RadioButton radioChart3Month;
         private System.Windows.Forms.RadioButton radioChart1Year;
         private System.Windows.Forms.DateTimePicker dateTimeClock;
+        private System.Windows.Forms.Label labelMsg;
     }
 }
 

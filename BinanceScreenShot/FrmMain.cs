@@ -1,19 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BinanceScreenShot
@@ -208,6 +203,23 @@ namespace BinanceScreenShot
         {
             string timeNow = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
             string timeSet = dateTimeClock.Value.ToString("dd-MM-yyyy HH:mm");
+
+            if (dateTimeClock.Value.Hour == 0 && dateTimeClock.Value.Minute == 0)
+            {
+                timerClock.Enabled = false;
+                return;
+            }
+
+            labelMsg.Text = timeNow;
+
+            if (DateTime.Now.Second % 2 == 0)
+            {
+                labelMsg.Font = new Font("Arial", 9, FontStyle.Regular);
+            }
+            else
+            {
+                labelMsg.Font = new Font("Arial", 9, FontStyle.Bold);
+            }
 
             if (timeNow == timeSet)
             {
