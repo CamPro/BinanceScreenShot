@@ -32,20 +32,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.buttonStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textTelegramLink = new System.Windows.Forms.TextBox();
+            this.textTelegram1day = new System.Windows.Forms.TextBox();
             this.buttonOpenProfile = new System.Windows.Forms.Button();
             this.checkShutdownAfterFinish = new System.Windows.Forms.CheckBox();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.checkExitApp = new System.Windows.Forms.CheckBox();
             this.textBinanceCoin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.radioChart1Day = new System.Windows.Forms.RadioButton();
-            this.radioChart7Day = new System.Windows.Forms.RadioButton();
-            this.radioChart1Month = new System.Windows.Forms.RadioButton();
-            this.radioChart3Month = new System.Windows.Forms.RadioButton();
-            this.radioChart1Year = new System.Windows.Forms.RadioButton();
             this.dateTimeClock = new System.Windows.Forms.DateTimePicker();
             this.labelMsg = new System.Windows.Forms.Label();
+            this.textTelegram7day = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textTelegram1month = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textTelegram3month = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textTelegram1year = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonFastSet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -62,19 +66,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 83);
+            this.label1.Location = new System.Drawing.Point(11, 115);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Telegram group";
+            this.label1.Size = new System.Drawing.Size(115, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Telegram 1 ngày";
             // 
-            // textTelegramLink
+            // textTelegram1day
             // 
-            this.textTelegramLink.Location = new System.Drawing.Point(162, 80);
-            this.textTelegramLink.Name = "textTelegramLink";
-            this.textTelegramLink.Size = new System.Drawing.Size(310, 23);
-            this.textTelegramLink.TabIndex = 5;
-            this.textTelegramLink.TextChanged += new System.EventHandler(this.textTelegramLink_TextChanged);
+            this.textTelegram1day.Location = new System.Drawing.Point(163, 112);
+            this.textTelegram1day.Name = "textTelegram1day";
+            this.textTelegram1day.Size = new System.Drawing.Size(310, 23);
+            this.textTelegram1day.TabIndex = 7;
+            this.textTelegram1day.TextChanged += new System.EventHandler(this.textTelegram1day_TextChanged);
             // 
             // buttonOpenProfile
             // 
@@ -90,12 +94,13 @@
             // checkShutdownAfterFinish
             // 
             this.checkShutdownAfterFinish.AutoSize = true;
-            this.checkShutdownAfterFinish.Location = new System.Drawing.Point(13, 232);
+            this.checkShutdownAfterFinish.Location = new System.Drawing.Point(13, 284);
             this.checkShutdownAfterFinish.Name = "checkShutdownAfterFinish";
             this.checkShutdownAfterFinish.Size = new System.Drawing.Size(159, 21);
-            this.checkShutdownAfterFinish.TabIndex = 13;
+            this.checkShutdownAfterFinish.TabIndex = 16;
             this.checkShutdownAfterFinish.Text = "Shutdown after finish";
             this.checkShutdownAfterFinish.UseVisualStyleBackColor = true;
+            this.checkShutdownAfterFinish.CheckedChanged += new System.EventHandler(this.checkShutdownAfterFinish_CheckedChanged);
             // 
             // timerClock
             // 
@@ -107,81 +112,29 @@
             this.checkExitApp.AutoSize = true;
             this.checkExitApp.Checked = true;
             this.checkExitApp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkExitApp.Location = new System.Drawing.Point(325, 232);
+            this.checkExitApp.Location = new System.Drawing.Point(325, 284);
             this.checkExitApp.Name = "checkExitApp";
             this.checkExitApp.Size = new System.Drawing.Size(147, 21);
-            this.checkExitApp.TabIndex = 14;
+            this.checkExitApp.TabIndex = 17;
             this.checkExitApp.Text = "Exit app after finish";
             this.checkExitApp.UseVisualStyleBackColor = true;
             // 
             // textBinanceCoin
             // 
-            this.textBinanceCoin.Location = new System.Drawing.Point(163, 119);
+            this.textBinanceCoin.Location = new System.Drawing.Point(163, 74);
             this.textBinanceCoin.Name = "textBinanceCoin";
             this.textBinanceCoin.Size = new System.Drawing.Size(310, 23);
-            this.textBinanceCoin.TabIndex = 7;
+            this.textBinanceCoin.TabIndex = 5;
             this.textBinanceCoin.TextChanged += new System.EventHandler(this.textBinanceCoin_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 122);
+            this.label2.Location = new System.Drawing.Point(11, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Binance coin";
-            // 
-            // radioChart1Day
-            // 
-            this.radioChart1Day.AutoSize = true;
-            this.radioChart1Day.Checked = true;
-            this.radioChart1Day.Location = new System.Drawing.Point(14, 168);
-            this.radioChart1Day.Name = "radioChart1Day";
-            this.radioChart1Day.Size = new System.Drawing.Size(69, 21);
-            this.radioChart1Day.TabIndex = 8;
-            this.radioChart1Day.TabStop = true;
-            this.radioChart1Day.Text = "1 ngày";
-            this.radioChart1Day.UseVisualStyleBackColor = true;
-            // 
-            // radioChart7Day
-            // 
-            this.radioChart7Day.AutoSize = true;
-            this.radioChart7Day.Location = new System.Drawing.Point(106, 168);
-            this.radioChart7Day.Name = "radioChart7Day";
-            this.radioChart7Day.Size = new System.Drawing.Size(69, 21);
-            this.radioChart7Day.TabIndex = 9;
-            this.radioChart7Day.Text = "7 ngày";
-            this.radioChart7Day.UseVisualStyleBackColor = true;
-            // 
-            // radioChart1Month
-            // 
-            this.radioChart1Month.AutoSize = true;
-            this.radioChart1Month.Location = new System.Drawing.Point(204, 168);
-            this.radioChart1Month.Name = "radioChart1Month";
-            this.radioChart1Month.Size = new System.Drawing.Size(74, 21);
-            this.radioChart1Month.TabIndex = 10;
-            this.radioChart1Month.Text = "1 tháng";
-            this.radioChart1Month.UseVisualStyleBackColor = true;
-            // 
-            // radioChart3Month
-            // 
-            this.radioChart3Month.AutoSize = true;
-            this.radioChart3Month.Location = new System.Drawing.Point(309, 168);
-            this.radioChart3Month.Name = "radioChart3Month";
-            this.radioChart3Month.Size = new System.Drawing.Size(74, 21);
-            this.radioChart3Month.TabIndex = 11;
-            this.radioChart3Month.Text = "3 tháng";
-            this.radioChart3Month.UseVisualStyleBackColor = true;
-            // 
-            // radioChart1Year
-            // 
-            this.radioChart1Year.AutoSize = true;
-            this.radioChart1Year.Location = new System.Drawing.Point(407, 168);
-            this.radioChart1Year.Name = "radioChart1Year";
-            this.radioChart1Year.Size = new System.Drawing.Size(65, 21);
-            this.radioChart1Year.TabIndex = 12;
-            this.radioChart1Year.Text = "1 năm";
-            this.radioChart1Year.UseVisualStyleBackColor = true;
             // 
             // dateTimeClock
             // 
@@ -202,24 +155,106 @@
             this.labelMsg.TabIndex = 2;
             this.labelMsg.Text = ".";
             // 
+            // textTelegram7day
+            // 
+            this.textTelegram7day.Location = new System.Drawing.Point(163, 143);
+            this.textTelegram7day.Name = "textTelegram7day";
+            this.textTelegram7day.Size = new System.Drawing.Size(310, 23);
+            this.textTelegram7day.TabIndex = 9;
+            this.textTelegram7day.TextChanged += new System.EventHandler(this.textTelegram7day_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Telegram 7 ngày";
+            // 
+            // textTelegram1month
+            // 
+            this.textTelegram1month.Location = new System.Drawing.Point(163, 174);
+            this.textTelegram1month.Name = "textTelegram1month";
+            this.textTelegram1month.Size = new System.Drawing.Size(310, 23);
+            this.textTelegram1month.TabIndex = 11;
+            this.textTelegram1month.TextChanged += new System.EventHandler(this.textTelegram1month_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 177);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Telegram 1 tháng";
+            // 
+            // textTelegram3month
+            // 
+            this.textTelegram3month.Location = new System.Drawing.Point(163, 205);
+            this.textTelegram3month.Name = "textTelegram3month";
+            this.textTelegram3month.Size = new System.Drawing.Size(310, 23);
+            this.textTelegram3month.TabIndex = 13;
+            this.textTelegram3month.TextChanged += new System.EventHandler(this.textTelegram3month_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 208);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 17);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Telegram 3 Tháng";
+            // 
+            // textTelegram1year
+            // 
+            this.textTelegram1year.Location = new System.Drawing.Point(163, 236);
+            this.textTelegram1year.Name = "textTelegram1year";
+            this.textTelegram1year.Size = new System.Drawing.Size(310, 23);
+            this.textTelegram1year.TabIndex = 15;
+            this.textTelegram1year.TextChanged += new System.EventHandler(this.textTelegram1year_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 239);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 17);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Telegram 1 năm";
+            // 
+            // buttonFastSet
+            // 
+            this.buttonFastSet.Location = new System.Drawing.Point(208, 40);
+            this.buttonFastSet.Name = "buttonFastSet";
+            this.buttonFastSet.Size = new System.Drawing.Size(75, 23);
+            this.buttonFastSet.TabIndex = 2;
+            this.buttonFastSet.Text = "fast set";
+            this.buttonFastSet.UseVisualStyleBackColor = true;
+            this.buttonFastSet.Click += new System.EventHandler(this.buttonFastSet_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.ClientSize = new System.Drawing.Size(484, 311);
+            this.Controls.Add(this.buttonFastSet);
+            this.Controls.Add(this.textTelegram1year);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textTelegram3month);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textTelegram1month);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textTelegram7day);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.labelMsg);
             this.Controls.Add(this.dateTimeClock);
-            this.Controls.Add(this.radioChart1Year);
-            this.Controls.Add(this.radioChart3Month);
-            this.Controls.Add(this.radioChart1Month);
-            this.Controls.Add(this.radioChart7Day);
-            this.Controls.Add(this.radioChart1Day);
             this.Controls.Add(this.textBinanceCoin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.checkExitApp);
             this.Controls.Add(this.checkShutdownAfterFinish);
             this.Controls.Add(this.buttonOpenProfile);
-            this.Controls.Add(this.textTelegramLink);
+            this.Controls.Add(this.textTelegram1day);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonStart);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -239,20 +274,24 @@
 
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textTelegramLink;
+        private System.Windows.Forms.TextBox textTelegram1day;
         private System.Windows.Forms.Button buttonOpenProfile;
         private System.Windows.Forms.CheckBox checkShutdownAfterFinish;
         private System.Windows.Forms.Timer timerClock;
         private System.Windows.Forms.CheckBox checkExitApp;
         private System.Windows.Forms.TextBox textBinanceCoin;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioChart1Day;
-        private System.Windows.Forms.RadioButton radioChart7Day;
-        private System.Windows.Forms.RadioButton radioChart1Month;
-        private System.Windows.Forms.RadioButton radioChart3Month;
-        private System.Windows.Forms.RadioButton radioChart1Year;
         private System.Windows.Forms.DateTimePicker dateTimeClock;
         private System.Windows.Forms.Label labelMsg;
+        private System.Windows.Forms.TextBox textTelegram7day;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textTelegram1month;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textTelegram3month;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textTelegram1year;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buttonFastSet;
     }
 }
 
