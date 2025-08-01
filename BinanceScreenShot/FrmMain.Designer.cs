@@ -225,11 +225,12 @@
             // 
             // buttonFastSet
             // 
+            this.buttonFastSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFastSet.Location = new System.Drawing.Point(208, 40);
             this.buttonFastSet.Name = "buttonFastSet";
             this.buttonFastSet.Size = new System.Drawing.Size(75, 23);
             this.buttonFastSet.TabIndex = 2;
-            this.buttonFastSet.Text = "fast set";
+            this.buttonFastSet.Text = "set faster";
             this.buttonFastSet.UseVisualStyleBackColor = true;
             this.buttonFastSet.Click += new System.EventHandler(this.buttonFastSet_Click);
             // 

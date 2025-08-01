@@ -117,6 +117,11 @@ namespace BinanceScreenShot
             Thread.Sleep(1000);
             js = (IJavaScriptExecutor)driver;
 
+            // GO demo
+            driver.Navigate().GoToUrl("https://www.binance.com/vi");
+            Thread.Sleep(2000);
+
+            // go coin url
             driver.Navigate().GoToUrl(binanceCoin);
             Thread.Sleep(5000);
 
@@ -131,6 +136,7 @@ namespace BinanceScreenShot
             // 1 day, 7 day, 1 month, 
             string coinName = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
             string imgFileName1day = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{coinName} 1 day {DateTime.Now.ToString("yyyy-MM-dd")}.png");
+            string imgFileName1dayCopy = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{coinName} 1 day {DateTime.Now.ToString("yyyy-MM-dd")} copy.png");
             string imgFileName7day = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{coinName} 7 day {DateTime.Now.ToString("yyyy-MM-dd")}.png");
             string imgFileName1month = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{coinName} 1 month {DateTime.Now.ToString("yyyy-MM-dd")}.png");
             string imgFileName3month = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{coinName} 3 month {DateTime.Now.ToString("yyyy-MM-dd")}.png");
@@ -142,6 +148,9 @@ namespace BinanceScreenShot
             bool isUp3month = false;
             bool isUp1year = false;
 
+            Screenshot sc = null;
+            Bitmap bmimg = null;
+
             // chose time
             elements = driver.FindElements(By.CssSelector("div.relative button.bn-button__text__yellow.data-size-small"));
             if (true)
@@ -150,9 +159,9 @@ namespace BinanceScreenShot
                 element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
 
                 // screen shot
-                Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                var img = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                Bitmap bmimg = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                sc = ((ITakesScreenshot)driver).GetScreenshot();
+                bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
                 bmimg.Save(imgFileName1day, ImageFormat.Png);
 
                 isUp1day = true;
@@ -168,9 +177,9 @@ namespace BinanceScreenShot
                 element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
 
                 // screen shot
-                Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                var img = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                Bitmap bmimg = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                sc = ((ITakesScreenshot)driver).GetScreenshot();
+                bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
                 bmimg.Save(imgFileName7day, ImageFormat.Png);
 
                 isUp7day = true;
@@ -186,9 +195,9 @@ namespace BinanceScreenShot
                 element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
 
                 // screen shot
-                Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                var img = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                Bitmap bmimg = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                sc = ((ITakesScreenshot)driver).GetScreenshot();
+                bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
                 bmimg.Save(imgFileName1month, ImageFormat.Png);
 
                 isUp1month = true;
@@ -205,9 +214,9 @@ namespace BinanceScreenShot
                 element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
 
                 // screen shot
-                Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                var img = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                Bitmap bmimg = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                sc = ((ITakesScreenshot)driver).GetScreenshot();
+                bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
                 bmimg.Save(imgFileName3month, ImageFormat.Png);
 
                 isUp3month = true;
@@ -223,15 +232,36 @@ namespace BinanceScreenShot
                 element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
 
                 // screen shot
-                Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                var img = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                Bitmap bmimg = img.Clone(new Rectangle(element.Location, element.Size), img.PixelFormat);
+                sc = ((ITakesScreenshot)driver).GetScreenshot();
+                bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
                 bmimg.Save(imgFileName1year, ImageFormat.Png);
 
                 isUp1year = true;
             }
             Thread.Sleep(500);
 
+            // refresh
+            driver.Navigate().GoToUrl("https://www.binance.com/vi/markets/overview");
+            Thread.Sleep(1000);
+            driver.Navigate().GoToUrl(binanceCoin);
+            Thread.Sleep(5000);
+
+            // xóa header
+            js.ExecuteScript("document.querySelector('div#__APP_HEADER').remove()");
+            js.ExecuteScript("document.querySelector('div.coin-price__breadcrumb-wrapper').remove()");
+            Thread.Sleep(250);
+
+            // element chart
+            element = driver.FindElement(By.CssSelector("div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl'] div.relative"));
+
+            // screen shot
+            sc = ((ITakesScreenshot)driver).GetScreenshot();
+            bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
+            bmimg.Save(imgFileName1dayCopy, ImageFormat.Png);
+
+            // upload telegram
             driver.Navigate().GoToUrl("https://web.telegram.org");
             Thread.Sleep(1000);
 
