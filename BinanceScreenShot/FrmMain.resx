@@ -120,6 +120,37 @@
   <metadata name="timerClock.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="richTextCoin.Text" xml:space="preserve">
+    <value>https://www.binance.com/vi/price/bitcoin
+https://www.binance.com/vi/price/ethereum
+https://www.binance.com/vi/price/xrp
+https://www.binance.com/vi/price/solana
+https://www.binance.com/vi/price/bnb
+https://www.binance.com/vi/price/dogecoin
+https://www.binance.com/vi/price/tron
+https://www.binance.com/vi/price/cardano
+https://www.binance.com/vi/price/stellar
+https://www.binance.com/vi/price/chainlink
+https://www.binance.com/vi/price/sui
+https://www.binance.com/vi/price/avalanche
+https://www.binance.com/vi/price/hedera
+https://www.binance.com/vi/price/uniswap
+https://www.binance.com/vi/price/litecoin
+https://www.binance.com/vi/price/toncoin
+https://www.binance.com/vi/price/shiba-inu
+https://www.binance.com/vi/price/polkadot-new
+https://www.binance.com/vi/price/worldcoin-org
+https://www.binance.com/vi/price/world-liberty-financial-wlfi
+https://www.binance.com/vi/price/ethena
+https://www.binance.com/vi/price/ondo-finance
+https://www.binance.com/vi/price/pepe
+https://www.binance.com/vi/price/aave
+https://www.binance.com/vi/price/near-protocol
+https://www.binance.com/vi/price/pudgy-penguins</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>44</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
