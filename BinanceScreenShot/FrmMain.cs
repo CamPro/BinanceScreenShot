@@ -373,22 +373,5 @@ namespace BinanceScreenShot
             driver.Quit();
         }
 
-        private void buttonCrop_Click(object sender, EventArgs e)
-        {
-            string[] files = Directory.GetFiles("D:\\BinanceScreenShot\\BinanceScreenShot\\bin\\Debug\\weeks37");
-
-            foreach (string imgfile in files)
-            {
-                Bitmap originalImage = new Bitmap(imgfile);
-
-                Rectangle cropArea = new Rectangle(0, 20, originalImage.Width, 435);
-                Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                Graphics g = Graphics.FromImage(croppedImage);
-                g.DrawImage(originalImage, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                croppedImage.Save(imgfile.Replace("weeks37", "weekscrop"), ImageFormat.Png);
-            }
-
-            Application.Exit();
-        }
     }
 }

@@ -45,7 +45,6 @@
             this.buttonOpenFolder = new System.Windows.Forms.Button();
             this.richTextCoin = new System.Windows.Forms.RichTextBox();
             this.buttonOpenDriver = new System.Windows.Forms.Button();
-            this.buttonCrop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -199,22 +198,11 @@
             this.buttonOpenDriver.UseVisualStyleBackColor = true;
             this.buttonOpenDriver.Click += new System.EventHandler(this.buttonOpenDriver_Click);
             // 
-            // buttonCrop
-            // 
-            this.buttonCrop.Location = new System.Drawing.Point(209, 212);
-            this.buttonCrop.Name = "buttonCrop";
-            this.buttonCrop.Size = new System.Drawing.Size(84, 49);
-            this.buttonCrop.TabIndex = 29;
-            this.buttonCrop.Text = "Crop";
-            this.buttonCrop.UseVisualStyleBackColor = true;
-            this.buttonCrop.Click += new System.EventHandler(this.buttonCrop_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
-            this.Controls.Add(this.buttonCrop);
             this.Controls.Add(this.buttonOpenDriver);
             this.Controls.Add(this.richTextCoin);
             this.Controls.Add(this.buttonOpenFolder);
@@ -259,7 +247,6 @@
         private System.Windows.Forms.Button buttonOpenFolder;
         private System.Windows.Forms.RichTextBox richTextCoin;
         private System.Windows.Forms.Button buttonOpenDriver;
-        private System.Windows.Forms.Button buttonCrop;
     }
 }
 
