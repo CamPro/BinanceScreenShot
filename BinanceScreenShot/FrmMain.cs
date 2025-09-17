@@ -20,6 +20,8 @@ namespace BinanceScreenShot
     {
         public static string FolderUserData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ChromeUserData");
         public static string SettingFile = Path.Combine(Application.StartupPath, "settings.txt");
+        public static string StableCoinFile = Path.Combine(Application.StartupPath, "stablecoin.txt");
+        public static List<string> StableCoins = new List<string>();
 
         public static ChromeDriver driver = null;
         public static ReadOnlyCollection<IWebElement> elements = null;
@@ -46,6 +48,10 @@ namespace BinanceScreenShot
                 textTelegram3month.Text = teleLinks[3];
                 textTelegram1year.Text = teleLinks[4];
                 */
+            }
+            if (File.Exists(StableCoinFile))
+            {
+                StableCoins  = File.ReadAllLines(StableCoinFile, Encoding.UTF8).ToList();
             }
 
             dateTimeClock.Format = DateTimePickerFormat.Custom;
@@ -373,5 +379,54 @@ namespace BinanceScreenShot
             driver.Quit();
         }
 
+        private void buttonScanTopList_Click(object sender, EventArgs e)
+        {
+            List<string> listUrls = new List<string>();
+
+            // start chrome driver
+            StartChromeDriver();
+            Thread.Sleep(1000);
+
+            for (int page = 1; page <= 2; page++)
+            {
+                driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
+                Thread.Sleep(1000);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    js.ExecuteScript($"window.scrollTo(0, {200 * i})");
+                    Thread.Sleep(500);
+
+                    elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
+
+                    foreach (var coinRow in elements)
+                    {
+                        string textRow = coinRow.Text.Trim().Split('\r').First();
+
+                        if (StableCoins.Contains(textRow))
+                        {
+                            continue;
+                        }
+
+                        try
+                        {
+                            string coinLink = coinRow.FindElement(By.CssSelector("a[href*='/price/']")).GetAttribute("href");
+
+                            if (!listUrls.Contains(coinLink))
+                            {
+                                listUrls.Add(coinLink);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                }
+            }
+
+            driver.Quit();
+
+            richTextCoin.Lines = listUrls.ToArray();
+        }
     }
 }

@@ -45,6 +45,7 @@
             this.buttonOpenFolder = new System.Windows.Forms.Button();
             this.richTextCoin = new System.Windows.Forms.RichTextBox();
             this.buttonOpenDriver = new System.Windows.Forms.Button();
+            this.buttonScanTopList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -60,7 +61,7 @@
             // 
             // buttonOpenProfile
             // 
-            this.buttonOpenProfile.Location = new System.Drawing.Point(119, 365);
+            this.buttonOpenProfile.Location = new System.Drawing.Point(119, 415);
             this.buttonOpenProfile.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOpenProfile.Name = "buttonOpenProfile";
             this.buttonOpenProfile.Size = new System.Drawing.Size(100, 40);
@@ -72,7 +73,7 @@
             // checkShutdownAfterFinish
             // 
             this.checkShutdownAfterFinish.AutoSize = true;
-            this.checkShutdownAfterFinish.Location = new System.Drawing.Point(209, 428);
+            this.checkShutdownAfterFinish.Location = new System.Drawing.Point(209, 478);
             this.checkShutdownAfterFinish.Name = "checkShutdownAfterFinish";
             this.checkShutdownAfterFinish.Size = new System.Drawing.Size(126, 21);
             this.checkShutdownAfterFinish.TabIndex = 16;
@@ -90,7 +91,7 @@
             this.checkExitApp.AutoSize = true;
             this.checkExitApp.Checked = true;
             this.checkExitApp.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkExitApp.Location = new System.Drawing.Point(12, 428);
+            this.checkExitApp.Location = new System.Drawing.Point(12, 478);
             this.checkExitApp.Name = "checkExitApp";
             this.checkExitApp.Size = new System.Drawing.Size(114, 21);
             this.checkExitApp.TabIndex = 17;
@@ -170,7 +171,7 @@
             // 
             // buttonOpenFolder
             // 
-            this.buttonOpenFolder.Location = new System.Drawing.Point(12, 365);
+            this.buttonOpenFolder.Location = new System.Drawing.Point(12, 415);
             this.buttonOpenFolder.Name = "buttonOpenFolder";
             this.buttonOpenFolder.Size = new System.Drawing.Size(100, 40);
             this.buttonOpenFolder.TabIndex = 25;
@@ -182,14 +183,14 @@
             // 
             this.richTextCoin.Location = new System.Drawing.Point(341, 12);
             this.richTextCoin.Name = "richTextCoin";
-            this.richTextCoin.Size = new System.Drawing.Size(381, 437);
+            this.richTextCoin.Size = new System.Drawing.Size(431, 487);
             this.richTextCoin.TabIndex = 26;
             this.richTextCoin.Text = resources.GetString("richTextCoin.Text");
             this.richTextCoin.WordWrap = false;
             // 
             // buttonOpenDriver
             // 
-            this.buttonOpenDriver.Location = new System.Drawing.Point(227, 365);
+            this.buttonOpenDriver.Location = new System.Drawing.Point(227, 415);
             this.buttonOpenDriver.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOpenDriver.Name = "buttonOpenDriver";
             this.buttonOpenDriver.Size = new System.Drawing.Size(100, 40);
@@ -198,11 +199,22 @@
             this.buttonOpenDriver.UseVisualStyleBackColor = true;
             this.buttonOpenDriver.Click += new System.EventHandler(this.buttonOpenDriver_Click);
             // 
+            // buttonScanTopList
+            // 
+            this.buttonScanTopList.Location = new System.Drawing.Point(12, 356);
+            this.buttonScanTopList.Name = "buttonScanTopList";
+            this.buttonScanTopList.Size = new System.Drawing.Size(120, 40);
+            this.buttonScanTopList.TabIndex = 30;
+            this.buttonScanTopList.Text = "Scan top list";
+            this.buttonScanTopList.UseVisualStyleBackColor = true;
+            this.buttonScanTopList.Click += new System.EventHandler(this.buttonScanTopList_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 461);
+            this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.buttonScanTopList);
             this.Controls.Add(this.buttonOpenDriver);
             this.Controls.Add(this.richTextCoin);
             this.Controls.Add(this.buttonOpenFolder);
@@ -247,6 +259,7 @@
         private System.Windows.Forms.Button buttonOpenFolder;
         private System.Windows.Forms.RichTextBox richTextCoin;
         private System.Windows.Forms.Button buttonOpenDriver;
+        private System.Windows.Forms.Button buttonScanTopList;
     }
 }
 
