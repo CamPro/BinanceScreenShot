@@ -185,7 +185,7 @@
             this.richTextCoin.Name = "richTextCoin";
             this.richTextCoin.Size = new System.Drawing.Size(431, 487);
             this.richTextCoin.TabIndex = 26;
-            this.richTextCoin.Text = resources.GetString("richTextCoin.Text");
+            this.richTextCoin.Text = "";
             this.richTextCoin.WordWrap = false;
             // 
             // buttonOpenDriver

@@ -19,8 +19,9 @@ namespace BinanceScreenShot
     public partial class FrmMain : Form
     {
         public static string FolderUserData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ChromeUserData");
-        public static string SettingFile = Path.Combine(Application.StartupPath, "settings.txt");
-        public static string StableCoinFile = Path.Combine(Application.StartupPath, "stablecoin.txt");
+        //public static string SettingFile = Path.Combine(Application.StartupPath, "settings.txt");
+        public static string SettingStableCoinFile = Path.Combine(Application.StartupPath, "setting_stablecoin.txt");
+        public static string SettingCoinFile = Path.Combine(Application.StartupPath, "setting_coins.txt");
         public static List<string> StableCoins = new List<string>();
 
         public static ChromeDriver driver = null;
@@ -37,21 +38,14 @@ namespace BinanceScreenShot
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            // read links
-            if (File.Exists(SettingFile))
+            // setting
+            if (File.Exists(SettingStableCoinFile))
             {
-                string[] teleLinks = File.ReadAllLines(SettingFile, Encoding.UTF8);
-                /*
-                textTelegram1day.Text = teleLinks[0];
-                textTelegram7day.Text = teleLinks[1];
-                textTelegram1month.Text = teleLinks[2];
-                textTelegram3month.Text = teleLinks[3];
-                textTelegram1year.Text = teleLinks[4];
-                */
+                StableCoins  = File.ReadAllLines(SettingStableCoinFile, Encoding.UTF8).ToList();
             }
-            if (File.Exists(StableCoinFile))
+            if (File.Exists(SettingCoinFile))
             {
-                StableCoins  = File.ReadAllLines(StableCoinFile, Encoding.UTF8).ToList();
+                richTextCoin.Lines = File.ReadAllLines(SettingCoinFile, Encoding.UTF8);
             }
 
             dateTimeClock.Format = DateTimePickerFormat.Custom;
@@ -71,7 +65,7 @@ namespace BinanceScreenShot
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //SaveSettings();
+            
         }
 
         private void StartChromeDriver()
@@ -337,19 +331,6 @@ namespace BinanceScreenShot
             }
         }
 
-        private void SaveSettings()
-        {
-            string[] settings = new string[5];
-            /*
-            settings[0] = textTelegram1day.Text;
-            settings[1] = textTelegram7day.Text;
-            settings[2] = textTelegram1month.Text;
-            settings[3] = textTelegram3month.Text;
-            settings[4] = textTelegram1year.Text;
-            */
-            File.WriteAllLines(SettingFile, settings, Encoding.UTF8);
-        }
-
         private void buttonFastSet_Click(object sender, EventArgs e)
         {
             DateTime today = DateTime.Today;
@@ -392,9 +373,9 @@ namespace BinanceScreenShot
                 driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
                 Thread.Sleep(1000);
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 7; i++)
                 {
-                    js.ExecuteScript($"window.scrollTo(0, {200 * i})");
+                    js.ExecuteScript($"window.scrollTo(0, {325 * i})");
                     Thread.Sleep(500);
 
                     elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
@@ -427,6 +408,8 @@ namespace BinanceScreenShot
             driver.Quit();
 
             richTextCoin.Lines = listUrls.ToArray();
+
+            File.WriteAllLines(SettingCoinFile, listUrls, Encoding.UTF8);
         }
     }
 }
