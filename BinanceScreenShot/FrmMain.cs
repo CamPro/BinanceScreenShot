@@ -18,8 +18,8 @@ namespace BinanceScreenShot
 {
     public partial class FrmMain : Form
     {
-        public static string FolderUserData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ChromeUserData");
-        //public static string SettingFile = Path.Combine(Application.StartupPath, "settings.txt");
+        //public static string FolderUserData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ChromeUserData");
+        public static string FolderUserData = Path.Combine(Application.StartupPath, "ChromeUserData");
         public static string SettingStableCoinFile = Path.Combine(Application.StartupPath, "setting_stablecoin.txt");
         public static string SettingCoinFile = Path.Combine(Application.StartupPath, "setting_coins.txt");
         public static List<string> StableCoins = new List<string>();
@@ -308,7 +308,7 @@ namespace BinanceScreenShot
         {
             Process pc_chrome = new Process();
             pc_chrome.StartInfo.FileName = "chrome.exe";
-            pc_chrome.StartInfo.Arguments = $"--start-maximized --user-data-dir={FolderUserData}";
+            pc_chrome.StartInfo.Arguments = $"https://www.binance.com/vi --start-maximized --user-data-dir={FolderUserData}";
             pc_chrome.Start();
         }
 
@@ -373,9 +373,9 @@ namespace BinanceScreenShot
                 driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
                 Thread.Sleep(1000);
 
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    js.ExecuteScript($"window.scrollTo(0, {325 * i})");
+                    js.ExecuteScript($"window.scrollTo(0, {450 * i})");
                     Thread.Sleep(500);
 
                     elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
