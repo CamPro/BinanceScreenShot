@@ -46,6 +46,16 @@
             this.richTextCoin = new System.Windows.Forms.RichTextBox();
             this.buttonOpenDriver = new System.Windows.Forms.Button();
             this.buttonScanTopList = new System.Windows.Forms.Button();
+            this.buttonViewChart = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioView7day = new System.Windows.Forms.RadioButton();
+            this.radioView1month = new System.Windows.Forms.RadioButton();
+            this.radioView3month = new System.Windows.Forms.RadioButton();
+            this.radioView1year = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numViewPage = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStart
@@ -209,11 +219,110 @@
             this.buttonScanTopList.UseVisualStyleBackColor = true;
             this.buttonScanTopList.Click += new System.EventHandler(this.buttonScanTopList_Click);
             // 
+            // buttonViewChart
+            // 
+            this.buttonViewChart.Location = new System.Drawing.Point(7, 17);
+            this.buttonViewChart.Name = "buttonViewChart";
+            this.buttonViewChart.Size = new System.Drawing.Size(148, 40);
+            this.buttonViewChart.TabIndex = 31;
+            this.buttonViewChart.Text = "View chart";
+            this.buttonViewChart.UseVisualStyleBackColor = true;
+            this.buttonViewChart.Click += new System.EventHandler(this.buttonViewChart_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numViewPage);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.radioView1year);
+            this.groupBox1.Controls.Add(this.radioView3month);
+            this.groupBox1.Controls.Add(this.radioView1month);
+            this.groupBox1.Controls.Add(this.radioView7day);
+            this.groupBox1.Controls.Add(this.buttonViewChart);
+            this.groupBox1.Location = new System.Drawing.Point(7, 243);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 100);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            // 
+            // radioView7day
+            // 
+            this.radioView7day.AutoSize = true;
+            this.radioView7day.Checked = true;
+            this.radioView7day.Location = new System.Drawing.Point(7, 64);
+            this.radioView7day.Name = "radioView7day";
+            this.radioView7day.Size = new System.Drawing.Size(61, 21);
+            this.radioView7day.TabIndex = 32;
+            this.radioView7day.TabStop = true;
+            this.radioView7day.Text = "7 day";
+            this.radioView7day.UseVisualStyleBackColor = true;
+            // 
+            // radioView1month
+            // 
+            this.radioView1month.AutoSize = true;
+            this.radioView1month.Location = new System.Drawing.Point(78, 64);
+            this.radioView1month.Name = "radioView1month";
+            this.radioView1month.Size = new System.Drawing.Size(77, 21);
+            this.radioView1month.TabIndex = 33;
+            this.radioView1month.Text = "1 month";
+            this.radioView1month.UseVisualStyleBackColor = true;
+            // 
+            // radioView3month
+            // 
+            this.radioView3month.AutoSize = true;
+            this.radioView3month.Location = new System.Drawing.Point(161, 64);
+            this.radioView3month.Name = "radioView3month";
+            this.radioView3month.Size = new System.Drawing.Size(77, 21);
+            this.radioView3month.TabIndex = 34;
+            this.radioView3month.Text = "3 month";
+            this.radioView3month.UseVisualStyleBackColor = true;
+            // 
+            // radioView1year
+            // 
+            this.radioView1year.AutoSize = true;
+            this.radioView1year.Location = new System.Drawing.Point(247, 64);
+            this.radioView1year.Name = "radioView1year";
+            this.radioView1year.Size = new System.Drawing.Size(66, 21);
+            this.radioView1year.TabIndex = 35;
+            this.radioView1year.Text = "1 year";
+            this.radioView1year.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(188, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "page:";
+            // 
+            // numViewPage
+            // 
+            this.numViewPage.Location = new System.Drawing.Point(238, 29);
+            this.numViewPage.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numViewPage.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numViewPage.Name = "numViewPage";
+            this.numViewPage.Size = new System.Drawing.Size(50, 23);
+            this.numViewPage.TabIndex = 37;
+            this.numViewPage.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonScanTopList);
             this.Controls.Add(this.buttonOpenDriver);
             this.Controls.Add(this.richTextCoin);
@@ -237,6 +346,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Shown += new System.EventHandler(this.FrmMain_Shown);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +372,14 @@
         private System.Windows.Forms.RichTextBox richTextCoin;
         private System.Windows.Forms.Button buttonOpenDriver;
         private System.Windows.Forms.Button buttonScanTopList;
+        private System.Windows.Forms.Button buttonViewChart;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioView1year;
+        private System.Windows.Forms.RadioButton radioView3month;
+        private System.Windows.Forms.RadioButton radioView1month;
+        private System.Windows.Forms.RadioButton radioView7day;
+        private System.Windows.Forms.NumericUpDown numViewPage;
+        private System.Windows.Forms.Label label1;
     }
 }
 

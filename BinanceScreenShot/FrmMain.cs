@@ -10,6 +10,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -268,6 +269,8 @@ namespace BinanceScreenShot
             // quit
             CloseChromeDriver();
 
+            SystemSounds.Asterisk.Play();
+
             // shutdown computer
             if (checkShutdownAfterFinish.Checked) shutdown();
 
@@ -335,6 +338,7 @@ namespace BinanceScreenShot
         {
             DateTime today = DateTime.Today;
             dateTimeClock.Value = new DateTime(today.Year, today.Month, today.Day, 23, 50, today.Second);
+            System.Media.SystemSounds.Hand.Play();
         }
 
         private void buttonOpenFolder_Click(object sender, EventArgs e)
@@ -375,7 +379,7 @@ namespace BinanceScreenShot
 
                 for (int i = 0; i < 5; i++)
                 {
-                    js.ExecuteScript($"window.scrollTo(0, {450 * i})");
+                    js.ExecuteScript($"window.scrollTo(0, {470 * i})");
                     Thread.Sleep(500);
 
                     elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
@@ -410,6 +414,116 @@ namespace BinanceScreenShot
             richTextCoin.Lines = listUrls.ToArray();
 
             File.WriteAllLines(SettingCoinFile, listUrls, Encoding.UTF8);
+
+            SystemSounds.Asterisk.Play();
+        }
+
+        private void buttonViewChart_Click(object sender, EventArgs e)
+        {
+            List<string> listUrls = new List<string>();
+            int numPage = Convert.ToInt32(numViewPage.Value);
+
+            // start chrome driver
+            StartChromeDriver();
+            Thread.Sleep(1000);
+
+            for (int page = 1; page <= numPage; page++)
+            {
+                try
+                {
+                    driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
+                    Thread.Sleep(1000);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        js.ExecuteScript($"window.scrollTo(0, {470 * i})");
+                        Thread.Sleep(500);
+
+                        elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
+
+                        foreach (var coinRow in elements)
+                        {
+                            string textRow = coinRow.Text.Trim().Split('\r').First();
+
+                            if (StableCoins.Contains(textRow))
+                            {
+                                continue;
+                            }
+
+                            try
+                            {
+                                string coinLink = coinRow.FindElement(By.CssSelector("a[href*='/price/']")).GetAttribute("href");
+
+                                if (!listUrls.Contains(coinLink))
+                                {
+                                    listUrls.Add(coinLink);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            foreach (var linkUrl in listUrls)
+            {
+                try
+                {
+                    // Open a new tab
+                    driver.SwitchTo().NewWindow(WindowType.Tab);
+                    Thread.Sleep(1000);
+
+                    driver.Navigate().GoToUrl(linkUrl);
+                    Thread.Sleep(1000);
+
+                    // chose time
+                    elements = driver.FindElements(By.CssSelector("div.relative button.bn-button__text__yellow.data-size-small"));
+
+                    if (radioView7day.Checked) elements[1].Click();
+
+                    if (radioView1month.Checked) elements[2].Click();
+
+                    if (radioView3month.Checked) elements[3].Click();
+
+                    if (radioView1year.Checked) elements[4].Click();
+
+                    Thread.Sleep(1000);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+            }
+
+            SystemSounds.Asterisk.Play();
+
+            for (int i = 0; i < 24 * 60 * 60; i++)
+            {
+                try
+                {
+                    driver.FindElement(By.TagName("body"));
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+                Thread.Sleep(1000);
+            }
+
+            driver.Quit();
         }
     }
 }
