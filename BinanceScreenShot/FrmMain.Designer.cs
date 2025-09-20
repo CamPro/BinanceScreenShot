@@ -48,12 +48,12 @@
             this.buttonScanTopList = new System.Windows.Forms.Button();
             this.buttonViewChart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioView7day = new System.Windows.Forms.RadioButton();
-            this.radioView1month = new System.Windows.Forms.RadioButton();
-            this.radioView3month = new System.Windows.Forms.RadioButton();
-            this.radioView1year = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.numViewPage = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioView1year = new System.Windows.Forms.RadioButton();
+            this.radioView3month = new System.Windows.Forms.RadioButton();
+            this.radioView1month = new System.Windows.Forms.RadioButton();
+            this.radioView7day = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
@@ -244,57 +244,6 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
-            // radioView7day
-            // 
-            this.radioView7day.AutoSize = true;
-            this.radioView7day.Checked = true;
-            this.radioView7day.Location = new System.Drawing.Point(7, 64);
-            this.radioView7day.Name = "radioView7day";
-            this.radioView7day.Size = new System.Drawing.Size(61, 21);
-            this.radioView7day.TabIndex = 32;
-            this.radioView7day.TabStop = true;
-            this.radioView7day.Text = "7 day";
-            this.radioView7day.UseVisualStyleBackColor = true;
-            // 
-            // radioView1month
-            // 
-            this.radioView1month.AutoSize = true;
-            this.radioView1month.Location = new System.Drawing.Point(78, 64);
-            this.radioView1month.Name = "radioView1month";
-            this.radioView1month.Size = new System.Drawing.Size(77, 21);
-            this.radioView1month.TabIndex = 33;
-            this.radioView1month.Text = "1 month";
-            this.radioView1month.UseVisualStyleBackColor = true;
-            // 
-            // radioView3month
-            // 
-            this.radioView3month.AutoSize = true;
-            this.radioView3month.Location = new System.Drawing.Point(161, 64);
-            this.radioView3month.Name = "radioView3month";
-            this.radioView3month.Size = new System.Drawing.Size(77, 21);
-            this.radioView3month.TabIndex = 34;
-            this.radioView3month.Text = "3 month";
-            this.radioView3month.UseVisualStyleBackColor = true;
-            // 
-            // radioView1year
-            // 
-            this.radioView1year.AutoSize = true;
-            this.radioView1year.Location = new System.Drawing.Point(247, 64);
-            this.radioView1year.Name = "radioView1year";
-            this.radioView1year.Size = new System.Drawing.Size(66, 21);
-            this.radioView1year.TabIndex = 35;
-            this.radioView1year.Text = "1 year";
-            this.radioView1year.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 17);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "page:";
-            // 
             // numViewPage
             // 
             this.numViewPage.Location = new System.Drawing.Point(238, 29);
@@ -316,6 +265,55 @@
             0,
             0,
             0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(188, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "page:";
+            // 
+            // radioView1year
+            // 
+            this.radioView1year.AutoSize = true;
+            this.radioView1year.Location = new System.Drawing.Point(247, 64);
+            this.radioView1year.Name = "radioView1year";
+            this.radioView1year.Size = new System.Drawing.Size(66, 21);
+            this.radioView1year.TabIndex = 35;
+            this.radioView1year.Text = "1 year";
+            this.radioView1year.UseVisualStyleBackColor = true;
+            // 
+            // radioView3month
+            // 
+            this.radioView3month.AutoSize = true;
+            this.radioView3month.Location = new System.Drawing.Point(161, 64);
+            this.radioView3month.Name = "radioView3month";
+            this.radioView3month.Size = new System.Drawing.Size(77, 21);
+            this.radioView3month.TabIndex = 34;
+            this.radioView3month.Text = "3 month";
+            this.radioView3month.UseVisualStyleBackColor = true;
+            // 
+            // radioView1month
+            // 
+            this.radioView1month.AutoSize = true;
+            this.radioView1month.Location = new System.Drawing.Point(78, 64);
+            this.radioView1month.Name = "radioView1month";
+            this.radioView1month.Size = new System.Drawing.Size(77, 21);
+            this.radioView1month.TabIndex = 33;
+            this.radioView1month.Text = "1 month";
+            this.radioView1month.UseVisualStyleBackColor = true;
+            // 
+            // radioView7day
+            // 
+            this.radioView7day.AutoSize = true;
+            this.radioView7day.Location = new System.Drawing.Point(7, 64);
+            this.radioView7day.Name = "radioView7day";
+            this.radioView7day.Size = new System.Drawing.Size(61, 21);
+            this.radioView7day.TabIndex = 32;
+            this.radioView7day.Text = "7 day";
+            this.radioView7day.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 

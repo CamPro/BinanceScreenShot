@@ -484,7 +484,7 @@ namespace BinanceScreenShot
                 {
                     // Open a new tab
                     driver.SwitchTo().NewWindow(WindowType.Tab);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(500);
 
                     driver.Navigate().GoToUrl(linkUrl);
                     Thread.Sleep(1000);
@@ -510,7 +510,7 @@ namespace BinanceScreenShot
 
             SystemSounds.Asterisk.Play();
 
-            for (int i = 0; i < 24 * 60 * 60; i++)
+            for (int i = 0; i < 60 * 60; i++)
             {
                 try
                 {
