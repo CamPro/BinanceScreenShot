@@ -136,7 +136,7 @@ namespace BinanceScreenShot
                     Cursor.Position = new Point(0, 0);
 
                     driver.Navigate().GoToUrl(linkCoin);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
 
                     // xóa header
                     js.ExecuteScript("document.querySelector('div#__APP_HEADER').remove()");
