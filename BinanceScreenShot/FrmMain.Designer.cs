@@ -54,6 +54,7 @@
             this.radioView3month = new System.Windows.Forms.RadioButton();
             this.radioView1month = new System.Windows.Forms.RadioButton();
             this.radioView7day = new System.Windows.Forms.RadioButton();
+            this.buttonViewChartLink = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
@@ -223,7 +224,7 @@
             // 
             this.buttonViewChart.Location = new System.Drawing.Point(7, 17);
             this.buttonViewChart.Name = "buttonViewChart";
-            this.buttonViewChart.Size = new System.Drawing.Size(148, 40);
+            this.buttonViewChart.Size = new System.Drawing.Size(100, 40);
             this.buttonViewChart.TabIndex = 31;
             this.buttonViewChart.Text = "View chart";
             this.buttonViewChart.UseVisualStyleBackColor = true;
@@ -231,6 +232,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonViewChartLink);
             this.groupBox1.Controls.Add(this.numViewPage);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioView1year);
@@ -246,7 +248,7 @@
             // 
             // numViewPage
             // 
-            this.numViewPage.Location = new System.Drawing.Point(238, 29);
+            this.numViewPage.Location = new System.Drawing.Point(266, 29);
             this.numViewPage.Maximum = new decimal(new int[] {
             10,
             0,
@@ -269,7 +271,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 29);
+            this.label1.Location = new System.Drawing.Point(216, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 36;
@@ -314,6 +316,16 @@
             this.radioView7day.TabIndex = 32;
             this.radioView7day.Text = "7 day";
             this.radioView7day.UseVisualStyleBackColor = true;
+            // 
+            // buttonViewChartLink
+            // 
+            this.buttonViewChartLink.Location = new System.Drawing.Point(113, 17);
+            this.buttonViewChartLink.Name = "buttonViewChartLink";
+            this.buttonViewChartLink.Size = new System.Drawing.Size(100, 40);
+            this.buttonViewChartLink.TabIndex = 38;
+            this.buttonViewChartLink.Text = "View link";
+            this.buttonViewChartLink.UseVisualStyleBackColor = true;
+            this.buttonViewChartLink.Click += new System.EventHandler(this.buttonViewChartLink_Click);
             // 
             // FrmMain
             // 
@@ -378,6 +390,7 @@
         private System.Windows.Forms.RadioButton radioView7day;
         private System.Windows.Forms.NumericUpDown numViewPage;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonViewChartLink;
     }
 }
 

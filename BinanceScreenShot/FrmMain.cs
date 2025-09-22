@@ -132,7 +132,8 @@ namespace BinanceScreenShot
             foreach (var linkCoin in listUrls)
             {
                 try
-                {// move mouse
+                {
+                    // move mouse
                     Cursor.Position = new Point(0, 0);
 
                     driver.Navigate().GoToUrl(linkCoin);
@@ -524,6 +525,77 @@ namespace BinanceScreenShot
             }
 
             driver.Quit();
+        }
+
+        private void buttonViewChartLink_Click(object sender, EventArgs e)
+        {
+            List<string> listUrls = new List<string>();
+            int numPage = Convert.ToInt32(numViewPage.Value);
+
+            // start chrome driver
+            StartChromeDriver();
+            Thread.Sleep(1000);
+
+            for (int page = 1; page <= numPage; page++)
+            {
+                try
+                {
+                    driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
+                    Thread.Sleep(1000);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        js.ExecuteScript($"window.scrollTo(0, {470 * i})");
+                        Thread.Sleep(500);
+
+                        elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
+
+                        foreach (var coinRow in elements)
+                        {
+                            string textRow = coinRow.Text.Trim().Split('\r').First();
+
+                            if (StableCoins.Contains(textRow))
+                            {
+                                continue;
+                            }
+
+                            try
+                            {
+                                string coinLink = coinRow.FindElement(By.CssSelector("a[href*='/price/']")).GetAttribute("href");
+
+                                if (!listUrls.Contains(coinLink))
+                                {
+                                    listUrls.Add(coinLink);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            driver.Quit();
+
+            foreach (var linkUrl in listUrls)
+            {
+                Process.Start(linkUrl);
+                Thread.Sleep(2000);
+            }
+
+            SystemSounds.Asterisk.Play();
         }
     }
 }
