@@ -597,5 +597,14 @@ namespace BinanceScreenShot
 
             SystemSounds.Asterisk.Play();
         }
+
+        private void buttonKillDriver_Click(object sender, EventArgs e)
+        {
+            Process[] listProcess = Process.GetProcessesByName("chromedriver");
+            foreach (var process in listProcess)
+            {
+                try { process.Kill(); } catch { }
+            }
+        }
     }
 }

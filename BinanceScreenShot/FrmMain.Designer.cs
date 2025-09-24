@@ -48,13 +48,14 @@
             this.buttonScanTopList = new System.Windows.Forms.Button();
             this.buttonViewChart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonViewChartLink = new System.Windows.Forms.Button();
             this.numViewPage = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.radioView1year = new System.Windows.Forms.RadioButton();
             this.radioView3month = new System.Windows.Forms.RadioButton();
             this.radioView1month = new System.Windows.Forms.RadioButton();
             this.radioView7day = new System.Windows.Forms.RadioButton();
-            this.buttonViewChartLink = new System.Windows.Forms.Button();
+            this.buttonKillDriver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
@@ -214,7 +215,7 @@
             // 
             this.buttonScanTopList.Location = new System.Drawing.Point(12, 356);
             this.buttonScanTopList.Name = "buttonScanTopList";
-            this.buttonScanTopList.Size = new System.Drawing.Size(120, 40);
+            this.buttonScanTopList.Size = new System.Drawing.Size(100, 40);
             this.buttonScanTopList.TabIndex = 30;
             this.buttonScanTopList.Text = "Scan top list";
             this.buttonScanTopList.UseVisualStyleBackColor = true;
@@ -245,6 +246,16 @@
             this.groupBox1.Size = new System.Drawing.Size(328, 100);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonViewChartLink
+            // 
+            this.buttonViewChartLink.Location = new System.Drawing.Point(113, 17);
+            this.buttonViewChartLink.Name = "buttonViewChartLink";
+            this.buttonViewChartLink.Size = new System.Drawing.Size(100, 40);
+            this.buttonViewChartLink.TabIndex = 38;
+            this.buttonViewChartLink.Text = "View link";
+            this.buttonViewChartLink.UseVisualStyleBackColor = true;
+            this.buttonViewChartLink.Click += new System.EventHandler(this.buttonViewChartLink_Click);
             // 
             // numViewPage
             // 
@@ -317,21 +328,23 @@
             this.radioView7day.Text = "7 day";
             this.radioView7day.UseVisualStyleBackColor = true;
             // 
-            // buttonViewChartLink
+            // buttonKillDriver
             // 
-            this.buttonViewChartLink.Location = new System.Drawing.Point(113, 17);
-            this.buttonViewChartLink.Name = "buttonViewChartLink";
-            this.buttonViewChartLink.Size = new System.Drawing.Size(100, 40);
-            this.buttonViewChartLink.TabIndex = 38;
-            this.buttonViewChartLink.Text = "View link";
-            this.buttonViewChartLink.UseVisualStyleBackColor = true;
-            this.buttonViewChartLink.Click += new System.EventHandler(this.buttonViewChartLink_Click);
+            this.buttonKillDriver.Location = new System.Drawing.Point(227, 356);
+            this.buttonKillDriver.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonKillDriver.Name = "buttonKillDriver";
+            this.buttonKillDriver.Size = new System.Drawing.Size(100, 40);
+            this.buttonKillDriver.TabIndex = 33;
+            this.buttonKillDriver.Text = "Kill driver";
+            this.buttonKillDriver.UseVisualStyleBackColor = true;
+            this.buttonKillDriver.Click += new System.EventHandler(this.buttonKillDriver_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.buttonKillDriver);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonScanTopList);
             this.Controls.Add(this.buttonOpenDriver);
@@ -391,6 +404,7 @@
         private System.Windows.Forms.NumericUpDown numViewPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonViewChartLink;
+        private System.Windows.Forms.Button buttonKillDriver;
     }
 }
 
