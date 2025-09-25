@@ -592,7 +592,7 @@ namespace BinanceScreenShot
             foreach (var linkUrl in listUrls)
             {
                 Process.Start(linkUrl);
-                Thread.Sleep(2000);
+                Thread.Sleep(2500);
             }
 
             SystemSounds.Asterisk.Play();
