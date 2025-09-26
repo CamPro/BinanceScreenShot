@@ -511,6 +511,8 @@ namespace BinanceScreenShot
 
             SystemSounds.Asterisk.Play();
 
+            this.Enabled = false;
+
             for (int i = 0; i < 60 * 60; i++)
             {
                 try
@@ -523,6 +525,8 @@ namespace BinanceScreenShot
                 }
                 Thread.Sleep(1000);
             }
+
+            this.Enabled = true;
 
             driver.Quit();
         }
