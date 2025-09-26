@@ -509,6 +509,8 @@ namespace BinanceScreenShot
                 }
             }
 
+            driver.SwitchTo().Window(driver.WindowHandles.First());
+
             SystemSounds.Asterisk.Play();
 
             this.Enabled = false;
@@ -517,11 +519,18 @@ namespace BinanceScreenShot
             {
                 try
                 {
-                    driver.FindElement(By.TagName("body"));
+                    string title = driver.Title;
                 }
                 catch (Exception)
                 {
-                    break;
+                    try
+                    {
+                        driver.SwitchTo().Window(driver.WindowHandles.First());
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
                 }
                 Thread.Sleep(1000);
             }
