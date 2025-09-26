@@ -120,6 +120,7 @@ namespace BinanceScreenShot
         private void buttonStart_Click(object sender, EventArgs e)
         {
             List<string> listUrls = richTextCoin.Lines.ToList();
+            string coinName = string.Empty;
 
             // start chrome driver
             StartChromeDriver();
@@ -146,7 +147,7 @@ namespace BinanceScreenShot
                     Thread.Sleep(100);
 
                     // coin name
-                    string coinName = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
+                    coinName = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
 
                     // chose time
                     elements = driver.FindElements(By.CssSelector("div.relative button.bn-button__text__yellow.data-size-small"));
@@ -154,116 +155,144 @@ namespace BinanceScreenShot
                     // neu la chu nhat se up chart 7 ngay
                     if (check7day.Checked)
                     {
-                        elements[1].Click();
-                        Thread.Sleep(5000);
+                        try
+                        {
+                            elements[1].Click();
+                            Thread.Sleep(5000);
 
-                        // save
-                        Calendar calendar = CultureInfo.CurrentCulture.Calendar;
-                        int weekNumber = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
-                        string saveFolder = Path.Combine(Application.StartupPath, $"weeks{weekNumber}");
-                        string imgFileName = Path.Combine(saveFolder, $"{coinName} w{weekNumber} {DateTime.Now.ToString("yyyy-MM-dd")}.png");
-                        if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
+                            // save
+                            Calendar calendar = CultureInfo.CurrentCulture.Calendar;
+                            int weekNumber = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+                            string saveFolder = Path.Combine(Application.StartupPath, $"weeks{weekNumber}");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} w{weekNumber} {DateTime.Now.ToString("yyyy-MM-dd")}.png");
+                            if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
-                        // element chart
-                        element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            // element chart
+                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
 
-                        // screen shot
-                        Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                        Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                        bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                        // crop
-                        Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                        Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                        Graphics g = Graphics.FromImage(croppedImage);
-                        g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                        // save
-                        croppedImage.Save(imgFileName, ImageFormat.Png);
+                            // screen shot
+                            Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
+                            Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
+                            // crop
+                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
+                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
+                            Graphics g = Graphics.FromImage(croppedImage);
+                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
+                            // save
+                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                        }
+                        catch (Exception ex)
+                        {
+                            File.AppendAllText("error.txt", $"{coinName} - 7 day: {ex.Message}\n");
+                        }
                     }
 
                     // neu la ngay cuoi thang se up chart 1 thang
                     if (check1month.Checked)
                     {
-                        elements[2].Click();
-                        Thread.Sleep(5000);
+                        try
+                        {
+                            elements[2].Click();
+                            Thread.Sleep(5000);
 
-                        // save
-                        string saveFolder = Path.Combine(Application.StartupPath, $"months{DateTime.Now.Month}");
-                        string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
-                        if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
+                            // save
+                            string saveFolder = Path.Combine(Application.StartupPath, $"months{DateTime.Now.Month}");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
+                            if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
-                        // element chart
-                        element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            // element chart
+                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
 
-                        // screen shot
-                        Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                        Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                        bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                        // crop
-                        Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                        Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                        Graphics g = Graphics.FromImage(croppedImage);
-                        g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                        // save
-                        croppedImage.Save(imgFileName, ImageFormat.Png);
+                            // screen shot
+                            Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
+                            Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
+                            // crop
+                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
+                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
+                            Graphics g = Graphics.FromImage(croppedImage);
+                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
+                            // save
+                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                        }
+                        catch (Exception ex)
+                        {
+                            File.AppendAllText("error.txt", $"{coinName} - 1 month: {ex.Message}\n");
+                        }
                     }
 
                     // neu la ngay cuoi quy 3, 6, 9, 12 se up chart 3 thang
                     if (check3month.Checked)
                     {
-                        elements[3].Click();
-                        Thread.Sleep(5000);
+                        try
+                        {
+                            elements[3].Click();
+                            Thread.Sleep(5000);
 
-                        // save
-                        string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 3}-{DateTime.Now.Month}");
-                        string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
-                        if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
+                            // save
+                            string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 3}-{DateTime.Now.Month}");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
+                            if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
-                        // element chart
-                        element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            // element chart
+                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
 
-                        // screen shot
-                        Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                        Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                        bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                        // crop
-                        Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                        Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                        Graphics g = Graphics.FromImage(croppedImage);
-                        g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                        // save
-                        croppedImage.Save(imgFileName, ImageFormat.Png);
+                            // screen shot
+                            Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
+                            Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
+                            // crop
+                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
+                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
+                            Graphics g = Graphics.FromImage(croppedImage);
+                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
+                            // save
+                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                        }
+                        catch (Exception ex)
+                        {
+                            File.AppendAllText("error.txt", $"{coinName} - 3 month: {ex.Message}\n");
+                        }
                     }
 
                     // neu la ngay cuoi nam se up chart 1 nam
                     if (check1year.Checked)
                     {
-                        elements[4].Click();
-                        Thread.Sleep(5000);
+                        try
+                        {
+                            elements[4].Click();
+                            Thread.Sleep(5000);
 
-                        // save
-                        string saveFolder = Path.Combine(Application.StartupPath, $"years{DateTime.Now.Year}");
-                        string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year}.png");
-                        if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
+                            // save
+                            string saveFolder = Path.Combine(Application.StartupPath, $"years{DateTime.Now.Year}");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year}.png");
+                            if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
-                        // element chart
-                        element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            // element chart
+                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
 
-                        // screen shot
-                        Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
-                        Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                        bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                        // crop
-                        Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                        Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                        Graphics g = Graphics.FromImage(croppedImage);
-                        g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                        // save
-                        croppedImage.Save(imgFileName, ImageFormat.Png);
+                            // screen shot
+                            Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
+                            Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
+                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
+                            // crop
+                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
+                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
+                            Graphics g = Graphics.FromImage(croppedImage);
+                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
+                            // save
+                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                        }
+                        catch (Exception ex)
+                        {
+                            File.AppendAllText("error.txt", $"{coinName} - 1 year: {ex.Message}\n");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    File.WriteAllText("error.txt", ex.Message);
+                    File.AppendAllText("error.txt", $"{coinName}: {ex.Message}\n");
                 }
             }
 
