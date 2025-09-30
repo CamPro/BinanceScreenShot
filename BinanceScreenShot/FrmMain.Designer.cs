@@ -56,6 +56,8 @@
             this.radioView1month = new System.Windows.Forms.RadioButton();
             this.radioView7day = new System.Windows.Forms.RadioButton();
             this.buttonKillDriver = new System.Windows.Forms.Button();
+            this.checkSkipCoinExistImage = new System.Windows.Forms.CheckBox();
+            this.buttonViewLiquidationHeatmap = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
@@ -233,6 +235,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonViewLiquidationHeatmap);
             this.groupBox1.Controls.Add(this.buttonViewChartLink);
             this.groupBox1.Controls.Add(this.numViewPage);
             this.groupBox1.Controls.Add(this.label1);
@@ -241,9 +244,9 @@
             this.groupBox1.Controls.Add(this.radioView1month);
             this.groupBox1.Controls.Add(this.radioView7day);
             this.groupBox1.Controls.Add(this.buttonViewChart);
-            this.groupBox1.Location = new System.Drawing.Point(7, 243);
+            this.groupBox1.Location = new System.Drawing.Point(7, 193);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 100);
+            this.groupBox1.Size = new System.Drawing.Size(328, 150);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
@@ -291,7 +294,7 @@
             // radioView1year
             // 
             this.radioView1year.AutoSize = true;
-            this.radioView1year.Location = new System.Drawing.Point(247, 64);
+            this.radioView1year.Location = new System.Drawing.Point(247, 117);
             this.radioView1year.Name = "radioView1year";
             this.radioView1year.Size = new System.Drawing.Size(66, 21);
             this.radioView1year.TabIndex = 35;
@@ -301,7 +304,7 @@
             // radioView3month
             // 
             this.radioView3month.AutoSize = true;
-            this.radioView3month.Location = new System.Drawing.Point(161, 64);
+            this.radioView3month.Location = new System.Drawing.Point(161, 117);
             this.radioView3month.Name = "radioView3month";
             this.radioView3month.Size = new System.Drawing.Size(77, 21);
             this.radioView3month.TabIndex = 34;
@@ -311,7 +314,7 @@
             // radioView1month
             // 
             this.radioView1month.AutoSize = true;
-            this.radioView1month.Location = new System.Drawing.Point(78, 64);
+            this.radioView1month.Location = new System.Drawing.Point(78, 117);
             this.radioView1month.Name = "radioView1month";
             this.radioView1month.Size = new System.Drawing.Size(77, 21);
             this.radioView1month.TabIndex = 33;
@@ -321,7 +324,7 @@
             // radioView7day
             // 
             this.radioView7day.AutoSize = true;
-            this.radioView7day.Location = new System.Drawing.Point(7, 64);
+            this.radioView7day.Location = new System.Drawing.Point(7, 117);
             this.radioView7day.Name = "radioView7day";
             this.radioView7day.Size = new System.Drawing.Size(61, 21);
             this.radioView7day.TabIndex = 32;
@@ -339,11 +342,32 @@
             this.buttonKillDriver.UseVisualStyleBackColor = true;
             this.buttonKillDriver.Click += new System.EventHandler(this.buttonKillDriver_Click);
             // 
+            // checkSkipCoinExistImage
+            // 
+            this.checkSkipCoinExistImage.AutoSize = true;
+            this.checkSkipCoinExistImage.Location = new System.Drawing.Point(12, 166);
+            this.checkSkipCoinExistImage.Name = "checkSkipCoinExistImage";
+            this.checkSkipCoinExistImage.Size = new System.Drawing.Size(224, 21);
+            this.checkSkipCoinExistImage.TabIndex = 34;
+            this.checkSkipCoinExistImage.Text = "Bỏ qua coin đã tồn tại hình ảnh";
+            this.checkSkipCoinExistImage.UseVisualStyleBackColor = true;
+            // 
+            // buttonViewLiquidationHeatmap
+            // 
+            this.buttonViewLiquidationHeatmap.Location = new System.Drawing.Point(7, 63);
+            this.buttonViewLiquidationHeatmap.Name = "buttonViewLiquidationHeatmap";
+            this.buttonViewLiquidationHeatmap.Size = new System.Drawing.Size(205, 40);
+            this.buttonViewLiquidationHeatmap.TabIndex = 39;
+            this.buttonViewLiquidationHeatmap.Text = "View Liquidation Heatmap";
+            this.buttonViewLiquidationHeatmap.UseVisualStyleBackColor = true;
+            this.buttonViewLiquidationHeatmap.Click += new System.EventHandler(this.buttonViewLiquidationHeatmap_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.checkSkipCoinExistImage);
             this.Controls.Add(this.buttonKillDriver);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonScanTopList);
@@ -405,6 +429,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonViewChartLink;
         private System.Windows.Forms.Button buttonKillDriver;
+        private System.Windows.Forms.CheckBox checkSkipCoinExistImage;
+        private System.Windows.Forms.Button buttonViewLiquidationHeatmap;
     }
 }
 

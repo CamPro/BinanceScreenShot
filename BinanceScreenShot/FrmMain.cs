@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -147,19 +148,24 @@ namespace BinanceScreenShot
                     Thread.Sleep(100);
 
                     // coin name
-                    coinName = driver.FindElement(By.CssSelector("div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
+                    coinName = driver.FindElement(By.CssSelector("section div.relative h1")).Text.Trim().Split('(').Last().Replace(")", "").Trim();
 
                     // chose time
-                    elements = driver.FindElements(By.CssSelector("div.relative button.bn-button__text__yellow.data-size-small"));
+                    elements = driver.FindElements(By.CssSelector("section div.relative button.bn-button__text__yellow.data-size-small"));
+
+                    /*
+                    // scroll to chart
+                    element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
+                    int targetHeight = element.Location.Y - 100;
+                    js.ExecuteScript($"window.scrollTo(0, {targetHeight});");
+                    Thread.Sleep(500);
+                    */
 
                     // neu la chu nhat se up chart 7 ngay
                     if (check7day.Checked)
                     {
                         try
                         {
-                            elements[1].Click();
-                            Thread.Sleep(5000);
-
                             // save
                             Calendar calendar = CultureInfo.CurrentCulture.Calendar;
                             int weekNumber = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
@@ -167,20 +173,23 @@ namespace BinanceScreenShot
                             string imgFileName = Path.Combine(saveFolder, $"{coinName} w{weekNumber} {DateTime.Now.ToString("yyyy-MM-dd")}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
+                            if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
+                            {
+                                throw new Exception("Skip exist");
+                            }
+
+                            elements[1].Click();
+                            Thread.Sleep(3000);
+
                             // element chart
-                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
 
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                            // crop
-                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                            Graphics g = Graphics.FromImage(croppedImage);
-                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                            // save
-                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
+                            bmimg.Save(imgFileName, ImageFormat.Png);
                         }
                         catch (Exception ex)
                         {
@@ -193,28 +202,28 @@ namespace BinanceScreenShot
                     {
                         try
                         {
-                            elements[2].Click();
-                            Thread.Sleep(5000);
-
                             // save
                             string saveFolder = Path.Combine(Application.StartupPath, $"months{DateTime.Now.Month}");
                             string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
+                            if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
+                            {
+                                throw new Exception("Skip exist");
+                            }
+
+                            elements[2].Click();
+                            Thread.Sleep(3000);
+
                             // element chart
-                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
 
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                            // crop
-                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                            Graphics g = Graphics.FromImage(croppedImage);
-                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                            // save
-                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
+                            bmimg.Save(imgFileName, ImageFormat.Png);
                         }
                         catch (Exception ex)
                         {
@@ -227,28 +236,28 @@ namespace BinanceScreenShot
                     {
                         try
                         {
-                            elements[3].Click();
-                            Thread.Sleep(5000);
-
                             // save
                             string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 3}-{DateTime.Now.Month}");
                             string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
+                            if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
+                            {
+                                throw new Exception("Skip exist");
+                            }
+
+                            elements[3].Click();
+                            Thread.Sleep(3000);
+
                             // element chart
-                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
 
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                            // crop
-                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                            Graphics g = Graphics.FromImage(croppedImage);
-                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                            // save
-                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
+                            bmimg.Save(imgFileName, ImageFormat.Png);
                         }
                         catch (Exception ex)
                         {
@@ -261,28 +270,28 @@ namespace BinanceScreenShot
                     {
                         try
                         {
-                            elements[4].Click();
-                            Thread.Sleep(5000);
-
                             // save
                             string saveFolder = Path.Combine(Application.StartupPath, $"years{DateTime.Now.Year}");
                             string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
+                            if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
+                            {
+                                throw new Exception("Skip exist");
+                            }
+
+                            elements[4].Click();
+                            Thread.Sleep(3000);
+
                             // element chart
-                            element = driver.FindElement(By.CssSelector("section div[class='md:w-3/5 md:flex-grow lg:w-2/3 xl:max-w-3xl']"));
+                            element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
 
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            bmimg = bmimg.Clone(new Rectangle(element.Location, element.Size), bmimg.PixelFormat);
-                            // crop
-                            Rectangle cropArea = new Rectangle(0, 20, bmimg.Width, 435);
-                            Bitmap croppedImage = new Bitmap(cropArea.Width, cropArea.Height);
-                            Graphics g = Graphics.FromImage(croppedImage);
-                            g.DrawImage(bmimg, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
-                            // save
-                            croppedImage.Save(imgFileName, ImageFormat.Png);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
+                            bmimg.Save(imgFileName, ImageFormat.Png);
                         }
                         catch (Exception ex)
                         {
@@ -416,9 +425,10 @@ namespace BinanceScreenShot
 
                     foreach (var coinRow in elements)
                     {
-                        string textRow = coinRow.Text.Trim().Split('\r').First();
+                        string textRow = coinRow.Text.Trim();
+                        string coinCode = textRow.Split('\r').First().Trim();
 
-                        if (StableCoins.Contains(textRow))
+                        if (StableCoins.Contains(coinCode) || coinCode.Equals("Tên"))
                         {
                             continue;
                         }
@@ -480,9 +490,10 @@ namespace BinanceScreenShot
 
                         foreach (var coinRow in elements)
                         {
-                            string textRow = coinRow.Text.Trim().Split('\r').First();
+                            string textRow = coinRow.Text.Trim();
+                            string coinCode = textRow.Split('\r').First().Trim();
 
-                            if (StableCoins.Contains(textRow))
+                            if (StableCoins.Contains(coinCode) || coinCode.Equals("Tên"))
                             {
                                 continue;
                             }
@@ -601,9 +612,10 @@ namespace BinanceScreenShot
 
                         foreach (var coinRow in elements)
                         {
-                            string textRow = coinRow.Text.Trim().Split('\r').First();
+                            string textRow = coinRow.Text.Trim();
+                            string coinCode = textRow.Split('\r').First().Trim();
 
-                            if (StableCoins.Contains(textRow))
+                            if (StableCoins.Contains(coinCode) || coinCode.Equals("Tên"))
                             {
                                 continue;
                             }
@@ -647,6 +659,72 @@ namespace BinanceScreenShot
             {
                 try { process.Kill(); } catch { }
             }
+        }
+
+        private void buttonViewLiquidationHeatmap_Click(object sender, EventArgs e)
+        {
+            List<string> listUrls = new List<string>();
+            int numPage = Convert.ToInt32(numViewPage.Value);
+
+            // start chrome driver
+            StartChromeDriver();
+            Thread.Sleep(1000);
+
+            for (int page = 1; page <= numPage; page++)
+            {
+                try
+                {
+                    driver.Navigate().GoToUrl($"https://www.binance.com/vi/markets/overview?p={page}");
+                    Thread.Sleep(1000);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    try
+                    {
+                        js.ExecuteScript($"window.scrollTo(0, {470 * i})");
+                        Thread.Sleep(500);
+
+                        elements = driver.FindElements(By.CssSelector("div.flex div.overview-table-row"));
+
+                        foreach (var coinRow in elements)
+                        {
+                            string textRow = coinRow.Text.Trim();
+                            string coinCode = textRow.Split('\r').First().Trim();
+
+                            if (StableCoins.Contains(coinCode) || coinCode.Equals("Tên"))
+                            {
+                                continue;
+                            }
+
+                            string liquidationLink = $"https://www.coinglass.com/en/pro/futures/LiquidationHeatMap?coin={coinCode}&type=symbol";                      
+
+                            if (!listUrls.Contains(liquidationLink))
+                            {
+                                listUrls.Add(liquidationLink);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            driver.Quit();
+
+            foreach (var linkUrl in listUrls)
+            {
+                Process.Start(linkUrl);
+                Thread.Sleep(2000);
+            }
+
+            SystemSounds.Asterisk.Play();
         }
     }
 }
