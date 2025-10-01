@@ -213,7 +213,7 @@ namespace BinanceScreenShot
                             }
 
                             elements[2].Click();
-                            Thread.Sleep(3000);
+                            Thread.Sleep(3500);
 
                             // element chart
                             element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
@@ -238,7 +238,7 @@ namespace BinanceScreenShot
                         {
                             // save
                             string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 3}-{DateTime.Now.Month}");
-                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.ToString("yyyy-MM")}.png");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year} {DateTime.Now.Month - 3}--{DateTime.Now.Month}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
                             if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
@@ -247,7 +247,7 @@ namespace BinanceScreenShot
                             }
 
                             elements[3].Click();
-                            Thread.Sleep(3000);
+                            Thread.Sleep(4500);
 
                             // element chart
                             element = driver.FindElement(By.CssSelector("section div.relative div.relative"));
@@ -281,7 +281,7 @@ namespace BinanceScreenShot
                             }
 
                             elements[4].Click();
-                            Thread.Sleep(3000);
+                            Thread.Sleep(5000);
 
                             // element chart
                             element = driver.FindElement(By.CssSelector("section div.relative div.relative"));

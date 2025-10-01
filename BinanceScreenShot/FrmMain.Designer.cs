@@ -48,6 +48,7 @@
             this.buttonScanTopList = new System.Windows.Forms.Button();
             this.buttonViewChart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonViewLiquidationHeatmap = new System.Windows.Forms.Button();
             this.buttonViewChartLink = new System.Windows.Forms.Button();
             this.numViewPage = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,14 +58,13 @@
             this.radioView7day = new System.Windows.Forms.RadioButton();
             this.buttonKillDriver = new System.Windows.Forms.Button();
             this.checkSkipCoinExistImage = new System.Windows.Forms.CheckBox();
-            this.buttonViewLiquidationHeatmap = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numViewPage)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(12, 47);
+            this.buttonStart.Location = new System.Drawing.Point(12, 75);
             this.buttonStart.Margin = new System.Windows.Forms.Padding(4);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(308, 50);
@@ -115,7 +115,7 @@
             // dateTimeClock
             // 
             this.dateTimeClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimeClock.Location = new System.Drawing.Point(12, 110);
+            this.dateTimeClock.Location = new System.Drawing.Point(12, 138);
             this.dateTimeClock.Name = "dateTimeClock";
             this.dateTimeClock.Size = new System.Drawing.Size(180, 23);
             this.dateTimeClock.TabIndex = 1;
@@ -124,7 +124,7 @@
             // buttonFastSet
             // 
             this.buttonFastSet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFastSet.Location = new System.Drawing.Point(198, 110);
+            this.buttonFastSet.Location = new System.Drawing.Point(198, 138);
             this.buttonFastSet.Name = "buttonFastSet";
             this.buttonFastSet.Size = new System.Drawing.Size(122, 25);
             this.buttonFastSet.TabIndex = 2;
@@ -177,7 +177,7 @@
             // labelMsg
             // 
             this.labelMsg.AutoSize = true;
-            this.labelMsg.Location = new System.Drawing.Point(11, 136);
+            this.labelMsg.Location = new System.Drawing.Point(11, 164);
             this.labelMsg.Name = "labelMsg";
             this.labelMsg.Size = new System.Drawing.Size(39, 17);
             this.labelMsg.TabIndex = 24;
@@ -249,6 +249,16 @@
             this.groupBox1.Size = new System.Drawing.Size(328, 150);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonViewLiquidationHeatmap
+            // 
+            this.buttonViewLiquidationHeatmap.Location = new System.Drawing.Point(7, 63);
+            this.buttonViewLiquidationHeatmap.Name = "buttonViewLiquidationHeatmap";
+            this.buttonViewLiquidationHeatmap.Size = new System.Drawing.Size(205, 40);
+            this.buttonViewLiquidationHeatmap.TabIndex = 39;
+            this.buttonViewLiquidationHeatmap.Text = "View Liquidation Heatmap";
+            this.buttonViewLiquidationHeatmap.UseVisualStyleBackColor = true;
+            this.buttonViewLiquidationHeatmap.Click += new System.EventHandler(this.buttonViewLiquidationHeatmap_Click);
             // 
             // buttonViewChartLink
             // 
@@ -345,22 +355,12 @@
             // checkSkipCoinExistImage
             // 
             this.checkSkipCoinExistImage.AutoSize = true;
-            this.checkSkipCoinExistImage.Location = new System.Drawing.Point(12, 166);
+            this.checkSkipCoinExistImage.Location = new System.Drawing.Point(12, 40);
             this.checkSkipCoinExistImage.Name = "checkSkipCoinExistImage";
             this.checkSkipCoinExistImage.Size = new System.Drawing.Size(224, 21);
             this.checkSkipCoinExistImage.TabIndex = 34;
             this.checkSkipCoinExistImage.Text = "Bỏ qua coin đã tồn tại hình ảnh";
             this.checkSkipCoinExistImage.UseVisualStyleBackColor = true;
-            // 
-            // buttonViewLiquidationHeatmap
-            // 
-            this.buttonViewLiquidationHeatmap.Location = new System.Drawing.Point(7, 63);
-            this.buttonViewLiquidationHeatmap.Name = "buttonViewLiquidationHeatmap";
-            this.buttonViewLiquidationHeatmap.Size = new System.Drawing.Size(205, 40);
-            this.buttonViewLiquidationHeatmap.TabIndex = 39;
-            this.buttonViewLiquidationHeatmap.Text = "View Liquidation Heatmap";
-            this.buttonViewLiquidationHeatmap.UseVisualStyleBackColor = true;
-            this.buttonViewLiquidationHeatmap.Click += new System.EventHandler(this.buttonViewLiquidationHeatmap_Click);
             // 
             // FrmMain
             // 
