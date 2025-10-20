@@ -237,8 +237,8 @@ namespace BinanceScreenShot
                         try
                         {
                             // save
-                            string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 3}-{DateTime.Now.Month}");
-                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year} {DateTime.Now.Month - 3}--{DateTime.Now.Month}.png");
+                            string saveFolder = Path.Combine(Application.StartupPath, $"3months{DateTime.Now.Month - 2}-{DateTime.Now.Month}");
+                            string imgFileName = Path.Combine(saveFolder, $"{coinName} {DateTime.Now.Year} {DateTime.Now.Month - 2}--{DateTime.Now.Month}.png");
                             if (!Directory.Exists(saveFolder)) Directory.CreateDirectory(saveFolder);
 
                             if (checkSkipCoinExistImage.Checked && File.Exists(imgFileName))
