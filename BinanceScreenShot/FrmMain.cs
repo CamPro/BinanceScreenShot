@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -187,7 +186,7 @@ namespace BinanceScreenShot
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 8, element.Size.Height + 57);
                             bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
                             bmimg.Save(imgFileName, ImageFormat.Png);
                         }
@@ -221,7 +220,7 @@ namespace BinanceScreenShot
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 8, element.Size.Height + 57);
                             bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
                             bmimg.Save(imgFileName, ImageFormat.Png);
                         }
@@ -255,7 +254,7 @@ namespace BinanceScreenShot
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 8, element.Size.Height + 57);
                             bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
                             bmimg.Save(imgFileName, ImageFormat.Png);
                         }
@@ -289,7 +288,7 @@ namespace BinanceScreenShot
                             // screen shot
                             Screenshot sc = ((ITakesScreenshot)driver).GetScreenshot();
                             Bitmap bmimg = Image.FromStream(new System.IO.MemoryStream(sc.AsByteArray)) as Bitmap;
-                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 2, element.Size.Height + 57);
+                            Rectangle cropArea = new Rectangle(element.Location.X - 3, element.Location.Y - 65, element.Size.Width + 8, element.Size.Height + 57);
                             bmimg = bmimg.Clone(cropArea, bmimg.PixelFormat);
                             bmimg.Save(imgFileName, ImageFormat.Png);
                         }
@@ -726,5 +725,6 @@ namespace BinanceScreenShot
 
             SystemSounds.Asterisk.Play();
         }
+
     }
 }
