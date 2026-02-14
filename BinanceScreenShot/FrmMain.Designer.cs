@@ -135,8 +135,6 @@
             // check7day
             // 
             this.check7day.AutoSize = true;
-            this.check7day.Checked = true;
-            this.check7day.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check7day.Location = new System.Drawing.Point(12, 12);
             this.check7day.Name = "check7day";
             this.check7day.Size = new System.Drawing.Size(62, 21);
@@ -147,6 +145,8 @@
             // check1month
             // 
             this.check1month.AutoSize = true;
+            this.check1month.Checked = true;
+            this.check1month.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check1month.Location = new System.Drawing.Point(85, 12);
             this.check1month.Name = "check1month";
             this.check1month.Size = new System.Drawing.Size(78, 21);
